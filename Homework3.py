@@ -98,10 +98,8 @@ class KMeansClassifier(object):
       ## Calc for new centers. Finished verison :)
       for i in range(len(p_n)):
         for j in range(len(p_n[0])):
-          if (p_s[i] != 0):
-            p_n[i][j] = p_n[i][j]/((p_s[i])) # Still need this, since a cluster center 'double nan/0' occurs sometime.
-          else : ## Tring to get it pretty, actually it is a double Nan/0
-            p_n[i][j] = p_n[i][j]/((p_s[i] + 0.1)) + random.uniform(my_list[j]/2,my_list[j]*2)
+          p_n[i][j] = p_n[i][j]/((p_s[i])) # No more double Nan/0 occurs. Removed 0 division proof
+
 
       # TODO Add each of the 'k' final cluster_centers to the model (self._cluster_centers)
       ## I update self._cluster_centers[] each time.
